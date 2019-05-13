@@ -1,65 +1,65 @@
 {
-  "elements": [{
-      "group": "nodes",
+   "elements": [{
+      "group":  "nodes",
       "data": {
-        "id": "n1"
+        "id":  "node1"
       },
       "classes": ["foo", "bar"]
     }, {
       "data": {
-        "id": "n2"
+        "id":  "node2"
       }
     },
     {
       "data": {
-        "id": "n4"
+        "id":  "node4"
       }
     }, {
       "data": {
-        "id": "n3"
+        "id":  "node3"
       }
     }, {
       "data": {
-        "id": "n5"
+        "id":  "node5"
       }
     }, {
       "data": {
-        "id": "e1",
-        "source": "n1",
-        "target": "n2"
+        "id":  "edge1",
+        "source":  "node1",
+        "target":  "node2"
       }
     },
     {
       "data": {
-        "id": "e2",
-        "source": "n1",
-        "target": "n3"
+        "id":  "edge2",
+        "source":  "node1",
+        "target":  "node3"
       }
     },
     {
       "data": {
-        "id": "e3",
-        "source": "n2",
-        "target": "n3"
+        "id":  "edge3",
+        "source":  "node2",
+        "target":  "node3"
       }
     },
     {
       "data": {
-        "id": "e4",
-        "source": "n1",
-        "target": "n4"
+        "id":  "edge4",
+        "source":  "node1",
+        "target":  "node4"
       }
     },
     {
       "data": {
-        "id": "e5",
-        "source": "n5",
-        "target": "n3"
+        "id":  "edge5",
+        "source":  "node5",
+        "target":  "node3"
       }
     }
   ],
   "style": [{
-    "selector": "node",
+    "selector":  "node",
     "style": {
       "label": "data(id)"
     }
