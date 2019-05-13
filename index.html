@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Cytoscape graph viewer</title>
+  <script
+			  src="https://code.jquery.com/jquery-3.4.1.min.js"
+			  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+			  crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape@3.6.0/dist/cytoscape.min.js" integrity="sha256-uZV2wRlscgr52q3Wb3Oew0rKCPsM3g4aBTv46sF4qzg=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header>
+    <form id="myForm">
+      <label>
+        Give me a JSON file to display:
+        <input id="jsonLink" type="text">
+        <button type="submit">Show me</button>
+      </label>
+  </form>
+  </header>
+  <main>
+    <div id="myGraph" height="1000"></div>
+  </main>
+  <script src="script.js"></script>
+</body>
+
+</html>

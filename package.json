@@ -1,0 +1,19 @@
+{
+  "name": "cytoscape-graph-displayer",
+  "version": "1.0.0",
+  "description": "Visualise cytoscape json quickly",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/intermine/cytoscape-graph-displayer.git"
+  },
+  "author": "Yo Yehudi and Nupur Gunwant",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/intermine/cytoscape-graph-displayer/issues"
+  },
+  "homepage": "https://github.com/intermine/cytoscape-graph-displayer#readme"
+}

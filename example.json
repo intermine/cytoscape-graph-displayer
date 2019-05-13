@@ -1,0 +1,67 @@
+{
+  "elements": [{
+      "group": "nodes",
+      "data": {
+        "id": "n1"
+      },
+      "classes": ["foo", "bar"]
+    }, {
+      "data": {
+        "id": "n2"
+      }
+    },
+    {
+      "data": {
+        "id": "n4"
+      }
+    }, {
+      "data": {
+        "id": "n3"
+      }
+    }, {
+      "data": {
+        "id": "n5"
+      }
+    }, {
+      "data": {
+        "id": "e1",
+        "source": "n1",
+        "target": "n2"
+      }
+    },
+    {
+      "data": {
+        "id": "e2",
+        "source": "n1",
+        "target": "n3"
+      }
+    },
+    {
+      "data": {
+        "id": "e3",
+        "source": "n2",
+        "target": "n3"
+      }
+    },
+    {
+      "data": {
+        "id": "e4",
+        "source": "n1",
+        "target": "n4"
+      }
+    },
+    {
+      "data": {
+        "id": "e5",
+        "source": "n5",
+        "target": "n3"
+      }
+    }
+  ],
+  "style": [{
+    "selector": "node",
+    "style": {
+      "label": "data(id)"
+    }
+  }]
+}

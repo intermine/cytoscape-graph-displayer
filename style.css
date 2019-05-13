@@ -1,0 +1,15 @@
+body {
+  background-color: #dedede;
+  padding: 0;
+  margin: 0;
+}
+
+header {
+  height: 10vh
+}
+
+#myGraph {
+  background-color: #fff;
+  height: 80vh;
+  width: 100vw;
+}
