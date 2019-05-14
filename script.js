@@ -11,7 +11,7 @@ myForm.addEventListener("submit", function(e) {
   console.log(ourJson);
   //check if it's a file or a direct copy/paste
   jsonType = fileOrJson(ourJson);
-  if(jsonType == "file") {
+  if (jsonType == "file") {
     loadFile(ourJson);
   } else {
     if (jsonType == "json") {
@@ -47,17 +47,26 @@ function fileOrJson(aString) {
   }
 }
 
-function showGraph(graphElements){
+function showGraph(graphElements) {
   graph.innerHTML = "";
-  console.log("JSON loaded", graphElements);
   //tell it what element to attach to
   graphElements.container = graph;
   graphElements.layout = {
     name: "cose"
   };
+
+  graphElements.style.push({
+    "selector": "node",
+    "style": {
+      "background-color": "rgb(104,159,56)",
+      "background-opacity" :  "data(weight)"
+    }
+  })
   //put the data inside cytoscape
+  console.log("JSON loaded", graphElements);
   cytoscape(graphElements);
 }
+
 
 
 //show demo graph
