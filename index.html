@@ -4,12 +4,19 @@
 <head>
   <meta charset="utf-8">
   <title>Cytoscape graph viewer</title>
-  <script
-			  src="https://code.jquery.com/jquery-3.4.1.min.js"
-			  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-			  crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/cytoscape@3.6.0/dist/cytoscape.min.js" integrity="sha256-uZV2wRlscgr52q3Wb3Oew0rKCPsM3g4aBTv46sF4qzg=" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="style.css">
+
+  <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+  <symbol id="icon-download" viewBox="0 0 32 32">
+  <title>download</title>
+  <path d="M28 16h-5l-7 7-7-7h-5l-4 8v2h32v-2l-4-8zM0 28h32v2h-32v-2zM18 10v-8h-4v8h-7l9 9 9-9h-7z"></path>
+  </symbol>
+</defs>
+</svg>
+
 </head>
 
 <body>
@@ -19,9 +26,14 @@
         Give me JSON (file or URL) to display:
         <input id="jsonLink" type="text">
       </label>
-        <button id="submitButton" type="submit">Show me</button>
-  </form>
-  <a href="#" id="demo">Show me a demo</a>
+      <button id="submitButton" type="submit">Show me</button>
+    </form>
+    <div class="toolbox">
+      <a href="#" id="demo">Show me a demo</a>
+      <a href="#" id="export"><svg class="icon icon-download"><use xlink:href="#icon-download"></use></svg> Download .png</a>
+      <!-- invisible fake link to help download images - see end of script.js -->
+      <a href="exporterFakeLink" download id="exporterFakeLink"></a>
+    </div>
   </header>
   <main>
     <div id="myGraph"></div>

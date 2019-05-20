@@ -1,7 +1,8 @@
 var demoFile = "http://intermine.org/cytoscape-graph-displayer/example.json",
   form = document.getElementById("myForm"),
   graph = document.getElementById("myGraph"),
-  textField = document.getElementById("jsonLink");
+  textField = document.getElementById("jsonLink"),
+  cy;
 
 //show graph when the form is submitted
 myForm.addEventListener("submit", function(e) {
@@ -59,12 +60,13 @@ function showGraph(graphElements) {
     "selector": "node",
     "style": {
       "background-color": "rgb(104,159,56)",
-      "background-opacity" :  "data(weight)"
+      "background-opacity": "data(weight)"
     }
   })
   //put the data inside cytoscape
   console.log("JSON loaded", graphElements);
-  cytoscape(graphElements);
+  cy = cytoscape(graphElements);
+  initExporter();
 }
 
 
@@ -76,3 +78,17 @@ demo.addEventListener("click", function(e) {
   jsonLink.value = demoFile;
   document.getElementById("submitButton").click();
 });
+
+
+function initExporter() {
+  //handle export / image download.
+  //http://js.cytoscape.org/#cy.png
+  var exporter = document.getElementById("export"),
+  exporterFakeLink = document.getElementById("exporterFakeLink");
+  exporter.addEventListener("click", function(e) {
+    e.preventDefault();
+    var img = cy.png();
+    exporterFakeLink.setAttribute("href",img);
+    exporterFakeLink.click();
+  });
+}

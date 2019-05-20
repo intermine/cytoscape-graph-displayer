@@ -6,7 +6,7 @@ body {
 }
 
 header,footer {
-  height: 10vh;
+  height: 12vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -32,6 +32,11 @@ button {
   text-shadow: 1px 1px rgba(0,0,0,0.3);
   font-weight:bold;
   font-size:1.2em;
+  min-width:12em;
+}
+
+button.export {
+background-color: #9E9E9E;
 }
 
 label {
@@ -47,10 +52,32 @@ input {
   margin:1em 1em;
 }
 
-button {min-width:12em;}
+
 
 .sample {
   border: solid 1px #999;
   background-color: #cdcdcd;
   padding: 0.2em 0.6em;
+}
+
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+
+.toolbox {
+  padding:0.5em;
+  display:flex;
+}
+
+.toolbox a {
+  padding:0em 1em;
+}
+
+#exporterFakeLink {
+  display:none;
 }
