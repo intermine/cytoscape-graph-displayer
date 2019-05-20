@@ -1,65 +1,73 @@
 {
-   "elements": [{
-      "group":  "nodes",
+  "elements": [{
+      "group": "nodes",
       "data": {
-        "id":  "node1"
+        "id": "node1",
+        "weight": 0.6
       },
-      "classes": ["foo", "bar"]
+      "classes": ["quokkamine", "duckmine"]
     }, {
       "data": {
-        "id":  "node2"
-      }
+        "id": "node2",
+        "weight": 0.4
+      },
+      "classes": ["puppymine", "kittenmine"]
     },
     {
       "data": {
-        "id":  "node4"
+        "id": "node4",
+        "weight": 0.3
+      },
+      "classes": ["platypusmine", "kiwimine"]
+    }, {
+      "data": {
+        "id": "node3",
+        "weight": 0.9
+      },
+      "classes": ["bushbabymine", "tigermine"]
+    }, {
+      "data": {
+        "id": "node5",
+        "weight": 1
       }
     }, {
       "data": {
-        "id":  "node3"
-      }
-    }, {
-      "data": {
-        "id":  "node5"
-      }
-    }, {
-      "data": {
-        "id":  "edge1",
-        "source":  "node1",
-        "target":  "node2"
+        "id": "edge1",
+        "source": "node1",
+        "target": "node2"
       }
     },
     {
       "data": {
-        "id":  "edge2",
-        "source":  "node1",
-        "target":  "node3"
+        "id": "edge2",
+        "source": "node1",
+        "target": "node3"
       }
     },
     {
       "data": {
-        "id":  "edge3",
-        "source":  "node2",
-        "target":  "node3"
+        "id": "edge3",
+        "source": "node2",
+        "target": "node3"
       }
     },
     {
       "data": {
-        "id":  "edge4",
-        "source":  "node1",
-        "target":  "node4"
+        "id": "edge4",
+        "source": "node1",
+        "target": "node4"
       }
     },
     {
       "data": {
-        "id":  "edge5",
-        "source":  "node5",
-        "target":  "node3"
+        "id": "edge5",
+        "source": "node5",
+        "target": "node3"
       }
     }
   ],
   "style": [{
-    "selector":  "node",
+    "selector": "node",
     "style": {
       "label": "data(id)"
     }

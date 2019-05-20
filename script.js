@@ -67,6 +67,7 @@ function showGraph(graphElements) {
   console.log("JSON loaded", graphElements);
   cy = cytoscape(graphElements);
   initExporter();
+  initClickHandler();
 }
 
 
@@ -79,16 +80,36 @@ demo.addEventListener("click", function(e) {
   document.getElementById("submitButton").click();
 });
 
+function initClickHandler() {
+  var classViewer = document.getElementById("info");
+    //show classes when clicked
+  cy.nodes().on('click', function(e) {
+    var nodeClasses = e.target.classes(),
+    label = e.target.data().id;
+    classViewContent = '<svg class="icon icon-info"><use xlink:href="#icon-info"></use></svg> '
+     + label + " is present in: ";
+
+    if (nodeClasses.length) { // if there are any classes
+      classViewContent += nodeClasses.length + " mines - " + nodeClasses.join(", ");
+    } else { // don't end up with error state, show no mines instead.
+      classViewContent += " no mines";
+    }
+    //show it to user
+    classViewer.innerHTML = classViewContent;
+  });
+}
 
 function initExporter() {
   //handle export / image download.
   //http://js.cytoscape.org/#cy.png
   var exporter = document.getElementById("export"),
-  exporterFakeLink = document.getElementById("exporterFakeLink");
+    exporterFakeLink = document.getElementById("exporterFakeLink");
   exporter.addEventListener("click", function(e) {
     e.preventDefault();
-    var img = cy.png({bg : "#fff"});
-    exporterFakeLink.setAttribute("href",img);
+    var img = cy.png({
+      bg: "#fff"
+    });
+    exporterFakeLink.setAttribute("href", img);
     exporterFakeLink.click();
   });
 }

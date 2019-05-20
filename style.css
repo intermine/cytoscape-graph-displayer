@@ -81,3 +81,6 @@ input {
 #exporterFakeLink {
   display:none;
 }
+
+#info {padding:0.4em 1em;
+background-color:#f6f6f6}
