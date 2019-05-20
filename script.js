@@ -87,7 +87,7 @@ function initExporter() {
   exporterFakeLink = document.getElementById("exporterFakeLink");
   exporter.addEventListener("click", function(e) {
     e.preventDefault();
-    var img = cy.png();
+    var img = cy.png({bg : "#fff"});
     exporterFakeLink.setAttribute("href",img);
     exporterFakeLink.click();
   });
