@@ -5,17 +5,24 @@ body {
   font-family: sans-serif;
 }
 
-header,footer {
-  height: 12vh;
+header, footer {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
+header {
+  height: 15vh
+}
+
+footer {
+  height: 10vh
+}
+
 #myGraph {
   background-color: #fff;
-  height: 80vh;
+  height: 70vh;
   width: 100vw;
 }
 
@@ -25,34 +32,33 @@ form {
 }
 
 button {
-  background-color:#8BC34A;
-  color:#fff;
-  border:0;
-  border-radius:4px;
-  text-shadow: 1px 1px rgba(0,0,0,0.3);
-  font-weight:bold;
-  font-size:1.2em;
-  min-width:12em;
+  background-color: #8BC34A;
+  color: #fff;
+  border: 0;
+  border-radius: 4px;
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.3);
+  font-weight: bold;
+  font-size: 1.2em;
+  min-width: 12em;
 }
 
-button.export {
-background-color: #9E9E9E;
+#export {
+  margin-left: 1em;
+  border-left: dotted 3px #666;
 }
 
 label {
   flex-grow: 1;
-  display:flex;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-weight:bold;
+  font-weight: bold;
 }
 
 input {
-  flex-grow:1;
-  margin:1em 1em;
+  flex-grow: 1;
+  margin: 1em 1em;
 }
-
-
 
 .sample {
   border: solid 1px #999;
@@ -70,17 +76,20 @@ input {
 }
 
 .toolbox {
-  padding:0.5em;
-  display:flex;
+  padding: 0.5em;
+  display: flex;
 }
 
 .toolbox a {
-  padding:0em 1em;
+  padding: 0em 1em;
 }
 
 #exporterFakeLink {
-  display:none;
+  display: none;
 }
 
-#info {padding:0.4em 1em;
-background-color:#f6f6f6}
+#info {
+  padding: 0.4em 1em;
+  background-color: #f6f6f6;
+  height: 5vh
+}
