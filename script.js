@@ -80,7 +80,8 @@ console.log(demo);
 [...demo].map(function(demoLink) {
   demoLink.addEventListener("click", function(e) {
     e.preventDefault();
-    jsonLink.value = "http://localhost:3333/sample_json_files/" + demoLink.dataset.link;
+    jsonLink.value = "http://intermine.org/cytoscape-graph-displayer/sample_json_files/"  +
+                      demoLink.dataset.link;
     document.getElementById("submitButton").click();
   });
 
