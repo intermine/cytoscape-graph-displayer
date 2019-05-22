@@ -31,7 +31,7 @@ def find_template_classes(intermine, template):
 
 def check_classes(intermine,template):
     classes_in_template = find_template_classes(intermine,template)
-    class_dict = defaultdict(list)
+    new_list=[]
     x = "http://registry.intermine.org/service/instances/" + intermine
     r = requests.get(x)
     dict = json.loads(r.text)
@@ -40,22 +40,17 @@ def check_classes(intermine,template):
     r = requests.get(link)
     dict = json.loads(r.text)
     for i in dict['model']['classes'].keys():
-        if dict['model']['classes'][i]['extends']:
-            for j in dict['model']['classes'][i]['extends']:
-                class_dict[i].append(j)
-        else:
-            class_dict[i]=[]
+        new_list.append(i)
 
-# class_dict is a dictionary that is like this {class1 : [class2], class2: [class5]...}
 
-    #print(class_dict)
+    #nodes
     f = open("one_intm_one_temp_json", "a")
     os.remove("one_intm_one_temp_json")
     f = open("one_intm_one_temp_json", "a")
     f.write('{"elements": [{ "group": "nodes",')
     count =0
 
-    for i in class_dict.keys():
+    for i in new_list:
         if(count!=0):
             f.write(', {')
         f.write('"data": {"id": "')
@@ -73,23 +68,50 @@ def check_classes(intermine,template):
 
 
 # developing edges in the json file
-    count=0
-
-    for i in class_dict.keys():
-        count = count+1
-        for j in class_dict[i]:
+    for i in dict['model']['classes'].keys():
+        if (dict['model']['classes'][i]['references']):
+            for j in dict['model']['classes'][i]['references'].keys():
+                if dict['model']['classes'][i]['references'][j]['referencedType'] in new_list:
+                    count = count+1
                     f.write(', {')
                     f.write('"data": {"id": "edge')
                     f.write(str(count))
                     f.write('", "source": "')
                     f.write(i)
                     f.write('", "target": "')
-                    f.write(j)
+                    f.write(dict['model']['classes'][i]['references'][j]['referencedType'])
                     f.write('"')
                     f.write('}')
                     f.write('}')
+        if (dict['model']['classes'][i]['collections']):
+            for j in dict['model']['classes'][i]['collections'].keys():
+                if dict['model']['classes'][i]['collections'][j]['referencedType'] in new_list:
+                    count = count+1
+                    f.write(', {')
+                    f.write('"data": {"id": "edge')
+                    f.write(str(count))
+                    f.write('", "source": "')
+                    f.write(i)
+                    f.write('", "target": "')
+                    f.write(dict['model']['classes'][i]['collections'][j]['referencedType'])
+                    f.write('"')
+                    f.write('}')
+                    f.write('}')
+        if (not dict['model']['classes'][i]['collections']) and (not dict['model']['classes'][i]['references']):
+            count = count+1
+            f.write(', {')
+            f.write('"data": {"id": "edge')
+            f.write(str(count))
+            f.write('", "source": "')
+            f.write(i)
+            f.write('", "target": "')
+            f.write(i)
+            f.write('"')
+            f.write('}')
+            f.write('}')
     f.write('],"style": [{"selector":  "node","style": {"label": "data(id)"}}]}')
 
+#check_classes('flymine','Gene_RegionLocation')
 '''
 >>>import one_intm_one_temp as o
 >>>o.check_classes('flymine','Gene_RegionLocation')
