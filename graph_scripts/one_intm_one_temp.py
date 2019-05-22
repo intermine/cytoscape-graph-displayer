@@ -111,7 +111,7 @@ def check_classes(intermine,template):
             f.write('}')
     f.write('],"style": [{"selector":  "node","style": {"label": "data(id)"}}]}')
 
-check_classes('flymine','Gene_RegionLocation')
+#check_classes('flymine','Gene_RegionLocation')
 '''
 >>>import one_intm_one_temp as o
 >>>o.check_classes('flymine','Gene_RegionLocation')

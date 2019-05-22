@@ -110,7 +110,7 @@ def find_classes(*intermines):
 
 #find_classes("flymine")
 #find_classes("ratmine", "mousemine","flymine","humanmine","bmapmine","chomine","beanmine","bovinemine","chickpeamine","cowpeamine","grapemine","hymenopteramine","indigomine","legumemine","maizemine","medicmine","mitominer","modmine","oakmine","peanutmine","phytomine","planmine","repetdbmine","soymine","targetmine","thalemine","wheatmine","wormmine","xenmine","yeastmine","zebrafishmine")
-find_classes("flymine", "humanmine","mousemine","ratmine")
+#find_classes("flymine", "humanmine","mousemine","ratmine")
 '''
 >>>import many_intm as m
 >>>m.find_classes("flymine", "humanmine","mousemine","ratmine")

@@ -105,7 +105,7 @@ def find_classes(intermine):
             f.write('}')
             f.write('}')
     f.write('],"style": [{"selector":  "node","style": {"label": "data(id)"}}]}')
-find_classes('flymine')
+#find_classes('flymine')
 '''
 >>>import one_intm_data as o
 >>>o.find_classes('flymine')

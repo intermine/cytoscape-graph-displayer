@@ -116,7 +116,7 @@ def check_classes(intermine,*templates):
             f.write('}')
             f.write('}')
     f.write('],"style": [{"selector":  "node","style": {"label": "data(id)"}}]}')
-check_classes('flymine','Gene_RegionLocation','GOterm_GenesInsertions','AlleleClass_Allele')
+#check_classes('flymine','Gene_RegionLocation','GOterm_GenesInsertions','AlleleClass_Allele')
 '''
 >>>import one_intm_many_temp as o
 >>>o.check_classes('flymine','Gene_RegionLocation','GOterm_GenesInsertions','AlleleClass_Allele','FlyFish_Genes','Pathway_Genes','AllGene_Chromosome','Gene_IntronChromosome')
