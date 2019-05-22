@@ -4,11 +4,10 @@ from collections import defaultdict
 import os
 
 
-
 def find_classes(*intermines):
     new_dict = defaultdict(list)
     classes = defaultdict(list)
-    new_list2 = []
+    new_list = []
     for i in range(0,len(intermines)):
         x = "http://registry.intermine.org/service/instances/" + intermines[i]
         r = requests.get(x)
@@ -18,21 +17,15 @@ def find_classes(*intermines):
         dict = json.loads(r.text)
         for j in dict['model']['classes'].keys():
             new_dict[intermines[i]].append(j)
-            new_list2.append(j)
-
-    #new_list contains all the data in a dict such that {'intermine': [classes]}
-
-    #distinct_classes contains all the data in a dict such that {'intermine': [classes]}
-    distinct_classes = set(new_list2)
-    distinct_classes = list(distinct_classes)
-
-    #distinct_classes contains all the distinct classes taking all intermines
-    for i in distinct_classes:
+            new_list.append(j)
+    new_list = list(set(new_list))
+    #new_dict contains all the data in a dict such that {'intermine': [classes]}
+    #new_list contains union of all the distinct classes taking all intermines
+    for i in new_list:
         for j in new_dict.keys():
-            for k in range(0,len(new_dict[j])):
-                if(i == new_dict[j][k]):
-                    classes[i].append(j)
-
+            if i in new_dict[j]:
+                classes[i].append(j)
+    #classes is dictionary of the form {class1:[intermine2,intermine3 ...],..}
 
     #makes nodes in the json file for yo's script
     f = open("many_intm_json", "a")
@@ -70,8 +63,39 @@ def find_classes(*intermines):
         dict = json.loads(r.text)
         count =0
         for i in dict['model']['classes'].keys():
-            count = count+1
-            if not dict['model']['classes'][i]['extends']:
+
+            if (dict['model']['classes'][i]['references']):
+
+                for j in dict['model']['classes'][i]['references'].keys():
+                    if dict['model']['classes'][i]['references'][j]['referencedType'] in new_list:
+                        count = count+1
+                        f.write(', {')
+                        f.write('"data": {"id": "edge')
+                        f.write(str(count))
+                        f.write('", "source": "')
+                        f.write(i)
+                        f.write('", "target": "')
+                        f.write(dict['model']['classes'][i]['references'][j]['referencedType'])
+                        f.write('"')
+                        f.write('}')
+                        f.write('}')
+            if (dict['model']['classes'][i]['collections']):
+
+                for j in dict['model']['classes'][i]['collections'].keys():
+                    if dict['model']['classes'][i]['collections'][j]['referencedType'] in new_list:
+                        count = count+1
+                        f.write(', {')
+                        f.write('"data": {"id": "edge')
+                        f.write(str(count))
+                        f.write('", "source": "')
+                        f.write(i)
+                        f.write('", "target": "')
+                        f.write(dict['model']['classes'][i]['collections'][j]['referencedType'])
+                        f.write('"')
+                        f.write('}')
+                        f.write('}')
+            if (not dict['model']['classes'][i]['collections']) and (not dict['model']['classes'][i]['references']):
+                count = count+1
                 f.write(', {')
                 f.write('"data": {"id": "edge')
                 f.write(str(count))
@@ -80,21 +104,8 @@ def find_classes(*intermines):
                 f.write('", "target": "')
                 f.write(i)
                 f.write('"')
-
                 f.write('}')
                 f.write('}')
-            else:
-                for j in dict['model']['classes'][i]['extends']:
-                        f.write(', {')
-                        f.write('"data": {"id": "edge')
-                        f.write(str(count))
-                        f.write('", "source": "')
-                        f.write(i)
-                        f.write('", "target": "')
-                        f.write(j)
-                        f.write('"')
-                        f.write('}')
-                        f.write('}')
     f.write('],"style": [{"selector":  "node","style": {"label": "data(id)"}}]}')
 
 #find_classes("flymine")
