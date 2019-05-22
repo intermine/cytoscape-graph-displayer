@@ -72,13 +72,21 @@ function showGraph(graphElements) {
 
 
 
-//show demo graph
-var demo = document.getElementById("demo");
-demo.addEventListener("click", function(e) {
-  e.preventDefault();
-  jsonLink.value = demoFile;
-  document.getElementById("submitButton").click();
-});
+//show demo graphs
+var demo = document.getElementsByClassName("demo");
+console.log(demo);
+//demo is an htmlcollection, which isn't iterable via map()
+//we need to convert to an array, using the spread operator [...array]
+[...demo].map(function(demoLink) {
+  demoLink.addEventListener("click", function(e) {
+    e.preventDefault();
+    jsonLink.value = "http://intermine.org/cytoscape-graph-displayer/sample_json_files/"  +
+                      demoLink.dataset.link;
+    document.getElementById("submitButton").click();
+  });
+
+})
+
 
 function initClickHandler() {
   var classViewer = document.getElementById("info");
@@ -107,7 +115,8 @@ function initExporter() {
   exporter.addEventListener("click", function(e) {
     e.preventDefault();
     var img = cy.png({
-      bg: "#fff"
+      bg: "#fff",
+      sclae: 10
     });
     exporterFakeLink.setAttribute("href", img);
     exporterFakeLink.click();
