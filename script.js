@@ -53,7 +53,7 @@ function showGraph(graphElements) {
   //tell it what element to attach to
   graphElements.container = graph;
   graphElements.layout = {
-    name: "cose"
+    name: "circle"
   };
 
   graphElements.style.push({
