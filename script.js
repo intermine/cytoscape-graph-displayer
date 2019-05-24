@@ -67,7 +67,7 @@ function showGraph(graphElements) {
     "selector": "edge",
     "style": {
       "background-color": "rgb(62,170,253)",
-      "background-opacity": "data(weight)"
+      "opacity": "data(weight)"
     }
   })
   //put the data inside cytoscape
