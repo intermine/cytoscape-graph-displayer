@@ -63,6 +63,13 @@ function showGraph(graphElements) {
       "background-opacity": "data(weight)"
     }
   })
+  graphElements.style.push({
+    "selector": "edge",
+    "style": {
+      "background-color": "rgb(62,170,253)",
+      "opacity": "data(weight)"
+    }
+  })
   //put the data inside cytoscape
   console.log("JSON loaded", graphElements);
   cy = cytoscape(graphElements);
