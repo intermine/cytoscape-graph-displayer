@@ -53,13 +53,20 @@ function showGraph(graphElements) {
   //tell it what element to attach to
   graphElements.container = graph;
   graphElements.layout = {
-    name: "cose"
+    name: "circle"
   };
 
   graphElements.style.push({
     "selector": "node",
     "style": {
       "background-color": "rgb(104,159,56)",
+      "background-opacity": "data(weight)"
+    }
+  })
+  graphElements.style.push({
+    "selector": "edge",
+    "style": {
+      "background-color": "rgb(62,170,253)",
       "background-opacity": "data(weight)"
     }
   })
